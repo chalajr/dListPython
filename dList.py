@@ -9,7 +9,8 @@
 
 
 #Creacion de la clase nodo, el constructor toma de valores a self y a elemento el cual sera el elemento que se encuentre dentro del nodo,
-#ademas podemos ver que se encuentran otros dos atributos los cuales nos van a indicar las conecciones entre los nodos.
+#ademas podemos ver que se encuentran otros dos atributos los cuales nos van a indicar las conexiones  entre los nodos.
+
 class Nodo:
     def __init__(self, elemento):
         self.elemento = elemento  
@@ -18,6 +19,7 @@ class Nodo:
     
 
 #Creacion de la clase de la lista doblemente ligada y su constructor, la cual contiene unicamente el nodo inicial o el root de la lista el cual le da un inicio a la lista 
+
 class doubleList:
     def __init__(self):
         self.root = None
@@ -26,33 +28,33 @@ class doubleList:
     #Insertando datos a la lista doblemente ligada
     #Insertando datos a una lista vacia
     def insertar_lista_vacia(self, dato):
-        #si la lista esta vacia:
+        #Si la lista esta vacia:
         if self.root is None:
-            #creamos un nuevo nodo
+            #Creamos un nuevo nodo
             nuevoNodo = Nodo(dato)
             #El root de la lista ahora apunta al nuevo nodo
             self.root = nuevoNodo
-        #si no esta vacia la lista
+        #Si no esta vacia la lista
         else:
             print("La lista no esta vacia")
 
 
     #Insertando datos al inicio de la lista
     def insertar_inicio(self, dato):
-        #si la lista esta vacia:
+        #Si la lista esta vacia:
         if self.root is None:
-            #utilizamos la funcion de agregar a lista vacia
+            #Utilizamos la funcion de agregar a lista vacia
             self.insertar_lista_vacia(dato)
             return
-        #si no esta vacia la lista
+        #Si no esta vacia la lista
         else:
-            #creamos un nuevo nodo 
+            #Creamos un nuevo nodo 
             nuevoNodo = Nodo(dato)
-            #asignamos como el siguiente nodo de nuestro nuevo nodo al nodo inicial o root
+            #Asignamos como el siguiente nodo de nuestro nuevo nodo al nodo inicial o root
             nuevoNodo.siguiente = self.root
-            #asignamos como nodo anterior en el root al nuevo nodo
+            #Asignamos como nodo anterior en el root al nuevo nodo
             self.root.anterior = nuevoNodo
-            #asignamos al nuevo nodo como root
+            #Asignamos al nuevo nodo como root
             self.root = nuevoNodo
 
 
@@ -89,10 +91,10 @@ class doubleList:
             apuntador = self.root
             #Encontramos el elemento buscado
             while apuntador is not None:
-                #Si el elemento en apuntador es igual al que estamos buscando detener el ciclo
+                #Si el elemento en apuntador es igual al que estamos buscando detenenemos el ciclo
                 if apuntador.elemento == x:
                     break
-                #Si no nos movemos al siguiente nodo
+                #Si no, nos movemos al siguiente nodo
                 apuntador = apuntador.siguiente
             #Si el apuntador esta vacio quiere decir que no existe ese elemento en la lista
             if apuntador is None:
@@ -158,6 +160,28 @@ class doubleList:
                 print(apuntador.elemento , " ")
                 apuntador = apuntador.siguiente
     
+
+    #Revisar que la lista este vacia
+    def lista_vacia(self):
+        #Como hemos implentado anteriormente si el root referencia a None
+        if self.root is None:
+            #Regresamos verdadero
+            return True
+        else:
+            #En caso contrario regresamos falso
+            return False
+
+
+    #Para contar los elementos en la lista nos auxiliaremos de dos variables, un apuntador el cual referenciara al root
+    #y una cuenta en la cual iremos sumando cuantos elementos encontramos
+    def contar_elementos(self):
+        apuntador = self.root
+        cuenta = 0
+        #De manera similar a cuando navegamos la lista utilizaremos un while y aumentaremos la cuenta + 1 cada vez que visitamos un nuevo nodo
+        while apuntador is not None:
+            cuenta = cuenta + 1
+            apuntador = apuntador.siguiente
+        return cuenta
 
     #Eliminando nodos
     #Eliminando nodos al inicio de la lista

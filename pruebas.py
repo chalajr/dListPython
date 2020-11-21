@@ -79,3 +79,6 @@ nuevaListaD.invertir()
 print("Prueba 8 invertir el order de la lista")
 nuevaListaD.navegar_lista() 
 
+#Prueba para contar elementos de la lista
+print("Prueba 9 contar elementos en la lista")
+print(nuevaListaD.contar_elementos())
